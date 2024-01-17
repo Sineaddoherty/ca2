@@ -1,0 +1,132 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title> 
+		Shopping list 
+	</title> 
+	<style> 
+		
+		
+
+
+		input, 
+		textarea { 
+			width: 200px; 
+			padding: 10px; 
+			border: 1px solid #ccc; 
+
+		} 
+
+		 
+
+		
+
+		table { 
+			border-collapse: collapse; 
+			margin-bottom: 30px; 
+			width: 100%; 
+		} 
+
+		th, 
+		td { 
+			border: 1px solid #ddd; 
+			padding: 10px; 
+			text-align: center; 
+		} 
+
+		th { 
+			background-color:pink; 
+			color: #fff; 
+		} 
+	</style> 
+</head> 
+
+<body> 
+	<h1> Shopping list </h1> 
+	
+	 
+
+	<div id="formContainer"> 
+		<label for="itemInput"> Shoping item:  </label>  <input type="text" id="itemInput" placeholder="Enter your shopping item"> 
+		<label for="priceInput"> Price: </label> <input type="number" id="priceInput" placeholder="Enter the price"> 
+		<label for="shopInput"> Shop: </label> <input type="text" id="shopInput" placeholder="Enter the shop"> 
+		<button onclick="data()"> Add </button> 
+	</div> 
+	<table id="list"> 
+		<tr> 
+			<th>Shoping item</th> 
+			<th>Price</th> 
+			<th>Shop</th> 
+			<th>Action</th> 
+			 
+		</tr> 
+	</table> 
+	<script> 
+		function data() { 
+			let item = document.getElementById("itemInput").value; 
+			let price = document.getElementById("priceInput").value; 
+			let shop = document.getElementById("shopInput").value; 
+		
+			
+			
+			let list = document.getElementById("list"); 
+			let Row = list.insertRow(list.rows.length); 
+			
+            
+			Row.insertCell(0).innerHTML = item; 
+			Row.insertCell(1).innerHTML = price; 
+			Row.insertCell(2).innerHTML = shop; 
+	 
+			Row.insertCell(3).innerHTML = '<button onclick="edit(this)">Edit</button>'+ '<button onclick="Delete(this)">Delete</button>'; 
+			
+			
+			clearInputs(); 
+		} 
+
+		function edit(button) { 
+			
+			 
+			let row = button.parentNode.parentNode; 
+			
+			
+			let itenc = row.cells[0]; 
+			let pricec = row.cells[1]; 
+			let shopc = row.cells[2]; 
+		 
+			
+			 
+			let ItemInput = prompt("new item name", itenc.innerHTML); 
+			let priceInput = prompt("new price:", pricec.innerHTML); 
+			let shopInput = prompt("new shop", shopc.innerHTML); 
+			
+			
+			
+			itenc.innerHTML = ItemInput; 
+			pricec.innerHTML = priceInput; 
+			shopc.innerHTML = shopInput; 
+			 
+		} 
+        
+		function Delete(button) { 
+			
+		 
+			let row = button.parentNode.parentNode; 
+
+			row.parentNode.removeChild(row); 
+		} 
+		function clearInputs() { 
+			
+		 
+			document.getElementById("nameInput").value = ""; 
+			document.getElementById("emailInput").value = ""; 
+			document.getElementById("numberInput").value = ""; 
+		 
+		}
+      
+	</script> 
+</body> 
+
+</html>
+
+
